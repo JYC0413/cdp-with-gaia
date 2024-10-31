@@ -9,6 +9,7 @@ from typing import Union
 from web3 import Web3
 from web3.exceptions import ContractLogicError
 from cdp.errors import ApiError, UnsupportedAssetError
+from dotenv import load_dotenv
 
 load_dotenv()
 # Configure the CDP SDK

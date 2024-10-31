@@ -6,7 +6,7 @@ from swarm import Swarm
 from swarm.repl import run_demo_loop
 from agents import based_agent
 from openai import OpenAI
-from dotenv import load_dotenv
+
 
 
 # this is the main loop that runs the agent in autonomous mode
