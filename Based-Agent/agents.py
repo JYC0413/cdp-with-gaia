@@ -10,9 +10,13 @@ from web3 import Web3
 from web3.exceptions import ContractLogicError
 from cdp.errors import ApiError, UnsupportedAssetError
 
+load_dotenv()
 # Configure the CDP SDK
 # This loads the API key from a JSON file. Make sure this file exists and contains valid credentials.
-Cdp.configure_from_json("./Based-Agent/cdp_api_key.json")
+# Cdp.configure_from_json("./Based-Agent/cdp_api_key.json")
+api_key_name = os.getenv("CDP_API_KEY_NAME")
+api_key_private_key = os.getenv("CDP_PRIVATE_KEY")
+Cdp.configure(api_key_name, api_key_private_key)
 
 # Create a new wallet on the Base Sepolia testnet
 # You could make this a function for the agent to create a wallet on any network
@@ -46,9 +50,9 @@ agent_wallet = Wallet.create()
 
 
 # Request funds from the faucet (only works on testnet)
-faucet = agent_wallet.faucet()
-print(f"Faucet transaction: {faucet}")
-print(f"Agent wallet address: {agent_wallet.default_address.address_id}")
+# faucet = agent_wallet.faucet()
+# print(f"Faucet transaction: {faucet}")
+# print(f"Agent wallet address: {agent_wallet.default_address.address_id}")
 
 # Function to create a new ERC-20 token
 def create_token(name, symbol, initial_supply):
