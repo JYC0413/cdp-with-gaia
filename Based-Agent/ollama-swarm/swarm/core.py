@@ -186,6 +186,8 @@ class Swarm:
 
             yield {"delim": "start"}
             for chunk in completion:
+                if not chunk.choices:
+                    continue
                 delta = json.loads(chunk.choices[0].delta.json())
                 if delta["role"] == "assistant":
                     delta["sender"] = active_agent.name
