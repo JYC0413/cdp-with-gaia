@@ -1,4 +1,5 @@
 import time
+import os
 import json
 import sys
 sys.path.append('./ollama-swarm')
@@ -63,7 +64,7 @@ def run_openai_conversation_loop(agent):
     while True:
         # Generate OpenAI response
         openai_response = openai_client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model=os.getenv("GAIA_CHAT_MODEL"),
             messages=openai_messages
         )
         
