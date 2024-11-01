@@ -2,7 +2,7 @@ import time
 import os
 import json
 import sys
-sys.path.append('./ollama-swarm')
+sys.path.append('./gaia-swarm')
 from swarm import Swarm
 from swarm.repl import run_demo_loop
 from agents import based_agent
