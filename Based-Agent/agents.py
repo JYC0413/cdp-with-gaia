@@ -16,7 +16,7 @@ load_dotenv()
 # This loads the API key from a JSON file. Make sure this file exists and contains valid credentials.
 # Cdp.configure_from_json("./Based-Agent/cdp_api_key.json")
 api_key_name = os.getenv("CDP_API_KEY_NAME")
-api_key_private_key = os.getenv("CDP_PRIVATE_KEY")
+api_key_private_key = os.getenv("CDP_PRIVATE_KEY").replace('\\n', '\n')
 Cdp.configure(api_key_name, api_key_private_key)
 
 # Create a new wallet on the Base Sepolia testnet
