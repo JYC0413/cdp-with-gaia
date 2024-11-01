@@ -49,7 +49,7 @@ def run_autonomous_loop(agent, interval=10):
 def run_openai_conversation_loop(agent):
     """Facilitates a conversation between an OpenAI-powered agent and the Based Agent."""
     client = Swarm()
-    openai_client = OpenAI()
+    openai_client = OpenAI(base_url=os.getenv("GAIA_CHAT_ENDPOINT"), api_key=os.getenv("OPENAI_API_KEY"))
     messages = []
     
     print("Starting OpenAI-Based Agent conversation loop...")
