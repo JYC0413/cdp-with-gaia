@@ -23,7 +23,7 @@ Cdp.configure(api_key_name, api_key_private_key)
 # You could make this a function for the agent to create a wallet on any network
 # If you want to use Base Mainnet, change Wallet.create() to Wallet.create(network_id="base-mainnet")
 # see https://docs.cdp.coinbase.com/mpc-wallet/docs/wallets for more information
-agent_wallet = Wallet.create()
+# agent_wallet = Wallet.create()
 
 # NOTE: the wallet is not currently persisted, meaning that it will be deleted after the agent is stopped. To persist the wallet, see https://docs.cdp.coinbase.com/mpc-wallet/docs/wallets#developer-managed-wallets 
 # Here's an example of how to persist the wallet:
@@ -32,28 +32,20 @@ agent_wallet = Wallet.create()
 # # Export wallet data (contains seed and wallet ID)
 # wallet_data = agent_wallet.export_data()
 # wallet_dict = wallet_data.to_dict()
+# # Example of importing previously exported wallet data:
+# imported_wallet = Wallet.import_data(wallet_dict)
 
 # # Example of saving to encrypted local file
 # file_path = "wallet_seed.json" 
 # agent_wallet.save_seed(file_path, encrypt=True)
 # print(f"Seed for wallet {agent_wallet.id} saved to {file_path}")
 
-# # Example of loading a saved wallet:
-# # 1. Fetch the wallet by ID
-# fetched_wallet = Wallet.fetch(wallet_id)
-# # 2. Load the saved seed
+# Load a saved wallet:
+# 1. Fetch the wallet by ID
+agent_wallet = Wallet.fetch(os.getenv("CDP_WALLET_ID"))
+# 2. Load the saved seed
 # fetched_wallet.load_seed("wallet_seed.json")
-
-# Example of importing previously exported wallet data:
-# imported_wallet = Wallet.import_data(wallet_dict)
-
-
-
-
-# Request funds from the faucet (only works on testnet)
-# faucet = agent_wallet.faucet()
-# print(f"Faucet transaction: {faucet}")
-# print(f"Agent wallet address: {agent_wallet.default_address.address_id}")
+agent_wallet.load_seed(os.getenv("CDP_WALLET_SEED_FILE"))
 
 # Function to create a new ERC-20 token
 def create_token(name, symbol, initial_supply):
