@@ -8,8 +8,6 @@ from swarm.repl import run_demo_loop
 from agents import based_agent
 from openai import OpenAI
 
-
-
 # this is the main loop that runs the agent in autonomous mode
 # you can modify this to change the behavior of the agent
 # the interval is the number of seconds between each thought
