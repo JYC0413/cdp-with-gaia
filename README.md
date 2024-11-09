@@ -1,11 +1,8 @@
 # Coinbase Wallet agent with gaia
 
+## Video demo
+
 [![Video demo](https://img.youtube.com/vi/x9lde3Vfwpg/0.jpg)](https://www.youtube.com/watch?v=x9lde3Vfwpg)
-
-## Overview
-
-This project leverages a modified version of `gaia-swarm` forked from `openai/swarm` to handle multiple agents.
-Helps LLM agents directly interact with the blockchain.
 
 ## Installation
 
